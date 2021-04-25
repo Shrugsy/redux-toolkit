@@ -46,9 +46,8 @@ export interface QueryHooks<
 > {
   useQuery: UseQuery<Definition>
   useLazyQuery: UseLazyQuery<Definition>
-  useQuerySubscription: UseQuerySubscription<Definition>
-  useLazyQuerySubscription: UseLazyQuerySubscription<Definition>
   useQueryState: UseQueryState<Definition>
+  useQuerySubscription: UseQuerySubscription<Definition>
 }
 
 export interface MutationHooks<
@@ -607,7 +606,6 @@ export function buildHooks<Definitions extends EndpointDefinitions>({
     return {
       useQueryState,
       useQuerySubscription,
-      useLazyQuerySubscription,
       useLazyQuery(options) {
         const [trigger, arg] = useLazyQuerySubscription(options)
         const queryStateResults = useQueryState(arg, {
